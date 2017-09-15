@@ -3,7 +3,8 @@ package cn.learn.ssm.entity;
 import java.util.Date;
 
 public class Goods {
-    private long goodsId;  
+    private long goodId;
+    private int number;
     private String title;
     private float price;
     private short state;
@@ -21,20 +22,30 @@ public class Goods {
     @Override
     public String toString() {
         return "Goods{" +
-                "goodsId=" + goodsId +
+                "goodId=" + goodId +
+                ", number=" + number +
                 ", title='" + title + '\'' +
                 ", price=" + price +
                 ", state=" + state +
                 ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
                 '}';
     }
 
-    public long getGoodsId() {
-        return goodsId;
+    public int getNumber() {
+        return number;
     }
 
-    public void setGoodsId(long goodsId) {
-        this.goodsId = goodsId;
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public long getgoodId() {
+        return goodId;
+    }
+
+    public void setgoodId(long goodId) {
+        this.goodId = goodId;
     }
 
     public String getTitle() {

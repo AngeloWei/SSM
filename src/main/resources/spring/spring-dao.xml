@@ -6,6 +6,7 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
+
         <!--config springdao-->
 
         <context:property-placeholder location="classpath:jdbc.properties" ignore-unresolvable="true" />
@@ -35,7 +36,7 @@
         </bean>
         <!--config Dao interface-->
         <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-            <property name="sqlSessionFactoryBeanName" value="sqlSessionFacory"/>
+            <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
             <property name="basePackage" value="cn.learn.ssm.dao"/>
         </bean>
 </beans>
