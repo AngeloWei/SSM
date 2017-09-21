@@ -10,5 +10,10 @@
     <update id="addScore" >
         UPDATE user_z set score=score+#{number}
     </update>
-
+    <select id="queryUserById" resultType="User">
+        select * from user_z where user_id=#{userId}
+    </select>
+    <insert id="addUser" >
+        insert into user_z(user_name,user_phone) VALUE (#{userName},#{userPhone})
+    </insert>
 </mapper>

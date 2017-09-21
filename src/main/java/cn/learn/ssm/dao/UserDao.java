@@ -20,10 +20,13 @@ public interface UserDao {
     /*
         add sorce
      */
-    void addSorce(@Param("number") int number,@Param("userId")int userId);
+    void addScore(@Param("number") int number);
 
     /*
     添加用户
      */
     void addUser(User user);
+    /* search user by userId
+     */
+    User queryUserById(@Param("userId") long userId);
 }

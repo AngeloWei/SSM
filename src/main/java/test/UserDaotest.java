@@ -37,9 +37,9 @@ public class UserDaotest {
     public void  insertUser(){
              User user = new User();
              long start=System.currentTimeMillis();
-        for(int i=100;i<500000;i++){
-            user.setUserName("张"+i);
-            user.setUserPhone("160532343"+i);
+        for(int i=100;i<500;i++){
+            user.setUserName("张三"+i);
+            user.setUserPhone("1622343"+i);
             userDao.addUser(user);
         }
             long end = System.currentTimeMillis();
