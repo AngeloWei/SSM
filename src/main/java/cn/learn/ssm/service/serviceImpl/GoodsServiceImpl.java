@@ -6,6 +6,8 @@ import cn.learn.ssm.dao.UserDao;
 import cn.learn.ssm.entity.Goods;
 import cn.learn.ssm.entity.Order;
 import cn.learn.ssm.entity.User;
+import cn.learn.ssm.enums.ResultEnum;
+import cn.learn.ssm.exception.BizException;
 import cn.learn.ssm.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -36,6 +38,7 @@ public class GoodsServiceImpl implements GoodsService{
         User user = userDao.queryUserById(userId);
         if(user==null){
             //throw exception of  user not exist;
+            throw new BizException(ResultEnum.USER_INVALIABLE.getMsg());
         }
         Order order = new Order();
         order.setgoodId(goodId);
@@ -43,10 +46,12 @@ public class GoodsServiceImpl implements GoodsService{
         int orderState = orderDao.createOrder(order);
         if(orderState!=1){
             //throw exception
+            throw new BizException(ResultEnum.DATA_BASE_INSERT.getMsg());
         }
         int i = goodsDao.reduceNumber(goodId);
         if(i!=1){
          //throw exception
+            throw  new BizException(ResultEnum.DATA_BASE_INSERT.getMsg());
         }
 
     }
