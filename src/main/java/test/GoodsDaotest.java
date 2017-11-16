@@ -2,7 +2,7 @@ package test;
 
 import cn.learn.ssm.dao.GoodsDao;
 import cn.learn.ssm.entity.Goods;
-import org.apache.taglibs.standard.tag.common.core.ForEachSupport;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

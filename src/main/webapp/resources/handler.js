@@ -3,8 +3,8 @@
 var handler = {
     //封装相关ajax的url
     URL: {
-        goodsBuy: function (goodsId) {
-            return '/goods/' + goodsId + '/buy';
+        goodsBuy: function (goodId) {
+            return '/goods/' + goodId + '/buy';
         }
     },
     //验证手机号
@@ -18,7 +18,7 @@ var handler = {
     //详情页秒杀逻辑
     goods: {
         //详情页初始化
-        init: function (params) {
+        init: function () {
             //在cookie中查找手机号
             var userPhone = $.cookie('userId');
             //验证手机号
@@ -46,9 +46,9 @@ var handler = {
         }
     },
 
-    goodsBuy: function (goodsId) {
+    goodsBuy: function (goodId) {
         //执行购买请求
-        $.post(handler.URL.goodsBuy(goodsId), {}, function (result) {
+        $.post(handler.URL.goodsBuy(goodId), {}, function (result) {
             if (result && result['success']) {
             	alert("购买成功！");
             	window.location.reload();

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+        <!--use the redis.properties -->
+        <context:property-placeholder   location="classpath:redis.properties" ignore-unresolvable="true" />
+        <!-- config scan package-->
+        <context:component-scan base-package="cn.learn.ssm.cache" />
+
+        <!--JedisPoolConfig-->
+        <bean id="jedisPoolConfig"  class="redis.clients.jedis.JedisPoolConfig" >
+                <property name="maxIdle" value="${redis.pool.maxIdel}" />
+                <property name="maxWaitMillis" value="${redis.pool.maxWaitMillis}"/>
+                <property name="maxTotal" value="${redis.pool.maxTotal}"/>
+                <property name="testOnBorrow" value="${redis.pool.testOnBorrow}"/>
+
+        </bean>
+        <!-- config redis connection-->
+        <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+            <property name="password" value="${redis.auth}" />
+            <property name="hostName" value="${redis.hostName}"/>
+            <property name="port"   value="${redis.port}"/>
+            <property name="poolConfig" ref="jedisPoolConfig"/>
+        </bean>
+        <!--redisTemplate config has more function than jedis. it is part of springframework -->
+        <bean id="redisTemplate"  class="org.springframework.data.redis.core.StringRedisTemplate" >
+            <property name="connectionFactory" ref="jedisConnectionFactory"/>
+        </bean>
+</beans>

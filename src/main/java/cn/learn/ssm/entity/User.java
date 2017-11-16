@@ -9,6 +9,14 @@ public class User {
     private Date createTime;
     private int score;
 
+    public User(int userId, String userName, String userPhone, int score) {
+        this.userId = userId;
+        this.userName = userName;
+        this.userPhone = userPhone;
+        this.score = score;
+    }
+    public User(){};
+
     @Override
     public String toString() {
         return "User{" +

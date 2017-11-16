@@ -43,6 +43,7 @@ public class GoodsServiceImpl implements GoodsService{
         Order order = new Order();
         order.setgoodId(goodId);
         order.setUserId(userId);
+        order.setTitle(goodId+userId+"");
         int orderState = orderDao.createOrder(order);
         if(orderState!=1){
             //throw exception

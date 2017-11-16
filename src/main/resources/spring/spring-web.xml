@@ -12,10 +12,17 @@
 		http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-        <!--扫描web包-->
+        <!--扫描web包,自动获取注解bean-->
         <context:component-scan base-package="cn.learn.ssm.web"/>
+        <!-- 扫描aop包,获取注解,处理数据检验-->
+        <context:component-scan base-package="cn.learn.ssm.aop"/>
+        <!-- 打开对AspectJ注解的支持-->
+        <aop:aspectj-autoproxy proxy-target-class="true" />
+        <!--扫描exception包-->
+        <context:component-scan base-package="cn.learn.ssm.exception"/>
 
-        <!--自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter -->
+        <!--自动注册DefaultAnnotationHandlerMapping,AnnotationMethodHandlerAdapter
+        提供一系列:数据绑定,数字和日期的Format,@NumberFormat,@DateTimeFormat,xml,json 默认支持读写-->
         <mvc:annotation-driven/>
         <!--使用web servlet 处理静态资源-->
         <mvc:default-servlet-handler/>
@@ -25,5 +32,6 @@
             <property name="prefix" value="/WEB-INF/jsp/"/>
             <property name="suffix" value=".jsp"/>
         </bean>
+
 
 </beans>

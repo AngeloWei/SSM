@@ -27,12 +27,12 @@
 					<tbody>
 						<c:forEach var="goods" items="${goodslist}">
 							<tr>
-								<td>${goods.goodsId}</td>
+								<td>${goods.goodId}</td>
 								<td>${goods.title}</td>
 								<td>${goods.price}</td>
-								<td><c:if test="${goods.state==0}">已下架</c:if> <c:if test="${goods.state==1}">销售中</c:if></td>
+								<td><c:if test="${goods.state==2}">已下架</c:if> <c:if test="${goods.state==1}">销售中</c:if></td>
 								<td>${goods.number}</td>
-								<td><button class="btn btn-info" id="goodsBuy" onclick="handler.goodsBuy(${goods.goodsId});">购买</button></td>
+								<td><button class="btn btn-info" id="goodsBuy" onclick="handler.goodsBuy(${goods.goodId});">购买</button></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -75,12 +75,7 @@
 
 </body>
 <script src="http://apps.bdimg.com/libs/jquery.cookie/1.4.1/jquery.cookie.js"></script>
-
-
-
-
-
-
+<script src="<%=path%>/resources/handler.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(function () {
 	//初始化业务逻辑script

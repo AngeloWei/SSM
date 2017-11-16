@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.validation.constraints.Null;
 import java.util.List;
 
 @Controller
@@ -32,7 +31,7 @@ public class GoodsController {
     @RequestMapping(value="list",method = RequestMethod.GET)
     public String  getGoodsList(Model model,Integer offset,Integer limit){
         offset=offset==null?0:offset;
-        limit=limit==null?0:limit;
+        limit=limit==null?50:limit;
         List<Goods> list = goodsService.getGoodsByPage(offset, limit);
         model.addAttribute("goodslist",list);
         return "goodslist";
@@ -40,7 +39,7 @@ public class GoodsController {
     /*
     购买商品
      */
-    @RequestMapping(value="/{goodId}/buy",method = RequestMethod.GET,produces = {"Application/JSON,charset=utf-8"})
+    @RequestMapping(value="/{goodId}/buy",method = RequestMethod.POST,produces = {"Application/JSON;charset=utf-8"})
     @ResponseBody
     public BaseResult<Object> buy(@CookieValue(value="userId",required = false)Long userId,Goods goods){
 
